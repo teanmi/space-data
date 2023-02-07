@@ -1,0 +1,15 @@
+
+
+#header {
+  height: calc(100vh - 70px);
+  background-color: rgb(14, 12, 12);
+
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+}
