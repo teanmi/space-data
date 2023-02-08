@@ -1,7 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./header.css";
 import * as THREE from "three";
+import { isMobile } from "react-device-detect";
 // import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import Earth from "../images/earth.jpg";
+import Moon from "../images/moon.jpg";
 
 const Header = () => {
   useEffect(() => {
@@ -11,10 +14,20 @@ const Header = () => {
 
     */
 
+    let r = 3;
+    let theta = 0;
+    let dTheta = Math.PI / 1000;
     function animate() {
-      let rotationAmount = 0.005;
+      let rotationAmount = 0.003;
 
       requestAnimationFrame(animate);
+
+      earth.rotation.y += rotationAmount / 3;
+
+      theta += dTheta;
+      moon.position.x = r * Math.cos(theta);
+      moon.position.z = 24 + r * Math.sin(theta);
+      moon.position.y = r * Math.cos(theta);
 
       saturn.rotation.x += rotationAmount;
       saturn.rotation.y += rotationAmount;
@@ -22,7 +35,6 @@ const Header = () => {
 
       saturnRing.rotation.x += rotationAmount;
       saturnRing.rotation.y += rotationAmount;
-      saturnRing.rotation.z += rotationAmount;
 
       // controls.update();
 
@@ -49,17 +61,19 @@ const Header = () => {
       renderer.setSize(window.innerWidth, window.innerHeight);
     }
 
-    let oldx = 0;
-    let oldy = 0;
-    window.onmousemove = function (event) {
-      let changex = event.x - oldx;
-      let changey = event.y - oldy;
-      camera.position.x += changex / 100;
-      camera.position.y -= changey / 100;
+    if (isMobile) {
+      let oldx = 0;
+      let oldy = 0;
+      window.onmousemove = function (event) {
+        let changex = event.x - oldx;
+        let changey = event.y - oldy;
+        camera.position.x += changex / 100;
+        camera.position.y -= changey / 100;
 
-      oldx = event.x;
-      oldy = event.y;
-    };
+        oldx = event.x;
+        oldy = event.y;
+      };
+    }
 
     /*
 
@@ -81,7 +95,7 @@ const Header = () => {
     });
 
     renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setSize(window.innerWidth, window.innerHeight / 1.1);
     camera.position.setZ(30);
 
     /*
@@ -90,6 +104,36 @@ const Header = () => {
 
     */
 
+    const earthGeometry = new THREE.SphereGeometry(2, 32, 32);
+    const earthTexture = new THREE.TextureLoader().load(Earth);
+    const earthMaterial = new THREE.MeshBasicMaterial({ map: earthTexture });
+
+    const earth = new THREE.Mesh(earthGeometry, earthMaterial);
+
+    earth.position.z = 24;
+    earth.rotation.z = 0.3;
+    scene.add(earth);
+
+    const moonGeometry = new THREE.SphereGeometry(0.5, 32, 32);
+    const moonTexture = new THREE.TextureLoader().load(Moon);
+    const moonMaterial = new THREE.MeshBasicMaterial({ map: moonTexture });
+
+    const moon = new THREE.Mesh(moonGeometry, moonMaterial);
+
+    moon.position.x = 2;
+    moon.position.y = 2;
+    moon.position.z = 24;
+
+    const jupiterGeometry = new THREE.SphereGeometry(3.5, 32, 16);
+    const jupiterMaterial = new THREE.MeshBasicMaterial({
+      color: 0xbcafb2,
+    });
+
+    const jupiter = new THREE.Mesh(jupiterGeometry, jupiterMaterial);
+
+    jupiter.position.x = -10;
+    jupiter.position.y = -15;
+
     const saturnGeometry = new THREE.SphereGeometry(2, 32, 16);
     const saturnMaterial = new THREE.MeshBasicMaterial({
       color: 0xfae5bf,
@@ -97,9 +141,9 @@ const Header = () => {
 
     const saturn = new THREE.Mesh(saturnGeometry, saturnMaterial);
 
-    saturn.position.x = 7.5;
-    saturn.position.y = 7.5;
-    saturn.position.z = 7.5;
+    saturn.position.x = 8;
+    saturn.position.y = 14;
+    saturn.position.z = 0;
 
     const saturnRingGeometry = new THREE.RingGeometry(3.5, 2.5, 32);
     const saturnRingMaterial = new THREE.MeshStandardMaterial({
@@ -109,9 +153,13 @@ const Header = () => {
 
     const saturnRing = new THREE.Mesh(saturnRingGeometry, saturnRingMaterial);
 
-    saturnRing.position.x = 7.5;
-    saturnRing.position.y = 7.5;
-    saturnRing.position.z = 7.5;
+    saturnRing.position.x = 8;
+    saturnRing.position.y = 14;
+    saturnRing.position.z = 0;
+
+    scene.add(moon);
+
+    scene.add(jupiter);
 
     scene.add(saturn);
 
@@ -141,7 +189,7 @@ const Header = () => {
 
     // const controls = new OrbitControls(camera, renderer.domElement);
 
-    scene.add(lightHelper);
+    // scene.add(lightHelper);
     // scene.add(gridHelper)
 
     /*
@@ -160,6 +208,7 @@ const Header = () => {
   return (
     <div id="header">
       <canvas id="background"></canvas>
+      <div className="h">test</div>
     </div>
   );
 };
