@@ -16,7 +16,7 @@ const Header = () => {
 
     let r = 3;
     let theta = 0;
-    let dTheta = Math.PI / 1000;
+    let dTheta = (1.2 * Math.PI) / 1000;
     function animate() {
       let rotationAmount = 0.003;
 
@@ -61,14 +61,16 @@ const Header = () => {
       renderer.setSize(window.innerWidth, window.innerHeight);
     }
 
-    if (isMobile) {
+    if (!isMobile) {
+      
+
       let oldx = 0;
       let oldy = 0;
       window.onmousemove = function (event) {
         let changex = event.x - oldx;
         let changey = event.y - oldy;
-        camera.position.x += changex / 100;
-        camera.position.y -= changey / 100;
+        camera.position.x += (changex / 1000);
+        camera.position.y -= changey / 1000;
 
         oldx = event.x;
         oldy = event.y;
@@ -89,6 +91,11 @@ const Header = () => {
       0.1,
       1000
     );
+
+    if(!isMobile) {
+      camera.position.x = -.4
+      camera.position.y = .4
+    }
 
     const renderer = new THREE.WebGL1Renderer({
       canvas: document.querySelector("#background"),
