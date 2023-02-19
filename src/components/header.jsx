@@ -16,7 +16,23 @@ import Neptune from "../images/neptune.jpg";
 
 const Header = () => {
   useEffect(() => {
-    console.log(window.innerWidth);
+    /* 
+
+      Loading
+
+    */
+
+    let loading = false;
+
+    const loadingManager = new THREE.LoadingManager();
+
+    loadingManager.onLoad = function () {
+      setTimeout(() => {
+        startLoading();
+      }, 1000);
+
+    };
+
     /*
 
       FUNCTIONS
@@ -27,6 +43,11 @@ const Header = () => {
     let theta = 0;
     let dTheta = (1.2 * Math.PI) / 600;
     function animate() {
+      if (loading === true) {
+        document.getElementById("loading-screen").classList.add("fade-out")
+        
+      }
+
       let rotationAmount = 0.003;
 
       requestAnimationFrame(animate);
@@ -107,8 +128,12 @@ const Header = () => {
 
     */
 
+    const textureLoader = new THREE.TextureLoader(loadingManager);
+
     const sunGeometry = new THREE.SphereGeometry(1.4, 32, 32);
-    const sunTexture = new THREE.TextureLoader().load(Sun);
+    const sunTexture = textureLoader.load(Sun);
+    sunTexture.minFilter = THREE.LinearFilter;
+
     const sunMaterial = new THREE.MeshBasicMaterial({ map: sunTexture });
     const sun = new THREE.Mesh(sunGeometry, sunMaterial);
 
@@ -119,7 +144,9 @@ const Header = () => {
     //
 
     const mercuryGeometry = new THREE.SphereGeometry(0.4, 32, 32);
-    const mercuryTexture = new THREE.TextureLoader().load(Mercury);
+    const mercuryTexture = textureLoader.load(Mercury);
+    mercuryTexture.minFilter = THREE.LinearFilter;
+
     const mercuryMaterial = new THREE.MeshBasicMaterial({
       map: mercuryTexture,
     });
@@ -132,7 +159,9 @@ const Header = () => {
     //
 
     const venusGeometry = new THREE.SphereGeometry(0.5, 32, 32);
-    const venusTexture = new THREE.TextureLoader().load(Venus);
+    const venusTexture = textureLoader.load(Venus);
+    venusTexture.minFilter = THREE.LinearFilter;
+
     const venusMaterial = new THREE.MeshBasicMaterial({ map: venusTexture });
     const venus = new THREE.Mesh(venusGeometry, venusMaterial);
 
@@ -143,7 +172,9 @@ const Header = () => {
     //
 
     const earthGeometry = new THREE.SphereGeometry(0.65, 32, 32);
-    const earthTexture = new THREE.TextureLoader().load(Earth);
+    const earthTexture = textureLoader.load(Earth);
+    earthTexture.minFilter = THREE.LinearFilter;
+
     const earthMaterial = new THREE.MeshBasicMaterial({ map: earthTexture });
 
     const earth = new THREE.Mesh(earthGeometry, earthMaterial);
@@ -156,7 +187,9 @@ const Header = () => {
     //
 
     const moonGeometry = new THREE.SphereGeometry(0.2, 32, 32);
-    const moonTexture = new THREE.TextureLoader().load(Moon);
+    const moonTexture = textureLoader.load(Moon);
+
+    moonTexture.minFilter = THREE.LinearFilter;
     const moonMaterial = new THREE.MeshBasicMaterial({ map: moonTexture });
 
     const moon = new THREE.Mesh(moonGeometry, moonMaterial);
@@ -169,7 +202,9 @@ const Header = () => {
     //
 
     const marsGeometry = new THREE.SphereGeometry(0.6, 32, 32);
-    const marsTexture = new THREE.TextureLoader().load(Mars);
+    const marsTexture = textureLoader.load(Mars);
+
+    marsTexture.minFilter = THREE.LinearFilter;
     const marsMaterial = new THREE.MeshBasicMaterial({ map: marsTexture });
     const mars = new THREE.Mesh(marsGeometry, marsMaterial);
 
@@ -180,7 +215,9 @@ const Header = () => {
     //
 
     const jupiterGeometry = new THREE.SphereGeometry(1.4, 32, 16);
-    const jupiterTexture = new THREE.TextureLoader().load(Jupiter);
+    const jupiterTexture = textureLoader.load(Jupiter);
+
+    jupiterTexture.minFilter = THREE.LinearFilter;
     const jupiterMaterial = new THREE.MeshBasicMaterial({
       map: jupiterTexture,
     });
@@ -191,8 +228,12 @@ const Header = () => {
 
     scene.add(jupiter);
 
+    //
+
     const saturnGeometry = new THREE.SphereGeometry(1.2, 32, 16);
-    const saturnTexture = new THREE.TextureLoader().load(Saturn);
+    const saturnTexture = textureLoader.load(Saturn);
+
+    saturnTexture.minFilter = THREE.LinearFilter;
     const saturnMaterial = new THREE.MeshBasicMaterial({
       map: saturnTexture,
     });
@@ -201,10 +242,12 @@ const Header = () => {
 
     //
 
-    const saturnRingGeometry = new THREE.RingBufferGeometry(1.25, 2, 64);
-    const saturnRingTexture = new THREE.TextureLoader().load(SaturnRing);
-    var pos = saturnRingGeometry.attributes.position;
-    var v3 = new THREE.Vector3();
+    const saturnRingGeometry = new THREE.RingGeometry(1.25, 2, 64);
+    const saturnRingTexture = textureLoader.load(SaturnRing);
+
+    saturnRingTexture.minFilter = THREE.LinearFilter;
+    const pos = saturnRingGeometry.attributes.position;
+    const v3 = new THREE.Vector3();
     for (let i = 0; i < pos.count; i++) {
       v3.fromBufferAttribute(pos, i);
       saturnRingGeometry.attributes.uv.setXY(i, v3.length() < 1.55 ? 0 : 1, 1);
@@ -227,8 +270,9 @@ const Header = () => {
     //
 
     const uranusGeometry = new THREE.SphereGeometry(0.85, 32, 32);
-    const uranusTexture = new THREE.TextureLoader().load(Uranus);
+    const uranusTexture = textureLoader.load(Uranus);
 
+    uranusTexture.minFilter = THREE.LinearFilter;
     const uranusMaterial = new THREE.MeshBasicMaterial({ map: uranusTexture });
     const uranus = new THREE.Mesh(uranusGeometry, uranusMaterial);
 
@@ -239,7 +283,9 @@ const Header = () => {
     //
 
     const neptuneGeometry = new THREE.SphereGeometry(0.8, 32, 32);
-    const neptuneTexture = new THREE.TextureLoader().load(Neptune);
+    const neptuneTexture = textureLoader.load(Neptune);
+
+    neptuneTexture.minFilter = THREE.LinearFilter;
     const neptuneMaterial = new THREE.MeshBasicMaterial({
       map: neptuneTexture,
     });
@@ -279,11 +325,54 @@ const Header = () => {
     Array(450).fill().forEach(addStar);
 
     animate();
+
+    /*
+
+      loadingState 
+
+    */
+
+    function startLoading() {
+      const circularSpinner = document.querySelector(".circular-spinner")
+
+      circularSpinner.style.opacity = 0;
+    
+      const circularProgress = document.querySelector(".circular-progress");
+      const circularText = document.querySelector(".loading-text")
+
+      circularProgress.style.opacity = 1;
+      circularProgress.style.display = "flex";
+      circularText.style.opacity = 1;
+
+
+      let progressStartValue = 0;
+      const progressEndValue = 100,
+        speed = 15;
+
+      const progress = setInterval(() => {
+        progressStartValue++;
+
+        circularProgress.style.background = `conic-gradient(white ${
+          progressStartValue * 3.6
+        }deg, black 0deg)`;
+
+        if (progressStartValue >= progressEndValue) {
+          loading = true;
+          clearInterval(progress);
+        }
+      }, speed);
+    }
   }, []);
 
   return (
     <div id="header">
       <canvas id="background"></canvas>
+      <div id="loading-screen">
+        <div className="circular-progress">
+          <div className="loading-text">M|T</div>
+        </div>
+        <div className="circular-spinner"></div>
+      </div>
     </div>
   );
 };
