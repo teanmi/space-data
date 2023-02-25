@@ -45,7 +45,7 @@ const Header = () => {
     function animate() {
       if (loading === true) {
         document.getElementById("loading-screen").classList.add("fade-out")
-        
+        document.getElementById("modal-main").classList.add("fade-in")
       }
 
       let rotationAmount = 0.003;
@@ -59,12 +59,12 @@ const Header = () => {
       moon.position.z = r * Math.sin(theta);
       moon.position.y = r * Math.cos(theta);
 
-      saturn.rotation.x += rotationAmount;
-      saturn.rotation.y += rotationAmount;
-      saturn.rotation.z += rotationAmount;
+      // saturn.rotation.x += rotationAmount;
+      // saturn.rotation.y += rotationAmount;
+      // saturn.rotation.z += rotationAmount;
 
-      saturnRing.rotation.x += rotationAmount;
-      saturnRing.rotation.y += rotationAmount;
+      // saturnRing.rotation.x += rotationAmount;
+      // saturnRing.rotation.y += rotationAmount;
 
       // controls.update();
 
@@ -253,6 +253,7 @@ const Header = () => {
       saturnRingGeometry.attributes.uv.setXY(i, v3.length() < 1.55 ? 0 : 1, 1);
     }
 
+
     const saturnRingMaterial = new THREE.MeshBasicMaterial({
       map: saturnRingTexture,
       color: 0xffffff,
@@ -264,6 +265,7 @@ const Header = () => {
 
     saturn.position.x = 4.7;
     saturnRing.position.x = 4.7;
+    saturnRing.rotation.x = 1.5
 
     scene.add(saturn, saturnRing);
 

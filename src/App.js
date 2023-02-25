@@ -1,13 +1,11 @@
 import Header from "./components/header.jsx";
-import Nav from "./components/nav"
+import MainModal from "./components/mainModal.jsx";
 
 function App() {
   return (
     <div className="App">
-      <Nav />
       <Header />
-      
-
+      <MainModal />
     </div>
   );
 }

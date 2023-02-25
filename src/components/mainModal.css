@@ -1,0 +1,56 @@
+#modal-main {
+  opacity: 0;
+  transition: opacity 300ms ease;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  height: 75%;
+  width: 75%;
+  z-index: 9999;
+  color: white;
+}
+
+#modal-main.fade-in {
+  opacity: 0.9;
+}
+
+.mainModal__container {
+  margin: 0 auto;
+  max-width: 1100px;
+  overflow: hidden;
+  background-color: black;
+  border-radius: 10%;
+  border: 1px solid white;
+  height: 100%;
+}
+
+.mainModal__header {
+  padding: 64px;
+}
+
+.mainModal__title {
+  margin-top: 0;
+  font-size: 35px;
+  font-weight: 600;
+  line-height: .85;
+
+}
+
+.mainModal__title span {
+  font-size: 26px;
+  font-weight: 500;
+
+}
+
+.mainModal__para {
+  font-size: 18px;
+}
+
+br {
+  content: "";
+  margin: 8px;
+  display: block;
+}
+

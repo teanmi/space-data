@@ -1,10 +1,8 @@
 #nav {
   background-color: black;
-  position: absolute;
   height: 70px;
   z-index: 1000;
   border-bottom: 1px solid white;
-
   color: white;
   width: 100%;
 }
@@ -16,12 +14,13 @@
   max-width: 1000px;
   margin: 0 auto;
   height: 70px;
-  padding: 0 32px;
+  padding: 0 64px;
 }
 
 .nav__logo {
   font-size: 48px;
   font-family: "Crimson Text", serif;
+  margin: 0;
 }
 
 .nav__links {
