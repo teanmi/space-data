@@ -1,12 +1,11 @@
 #modal-main {
   opacity: 0;
-  transition: opacity 300ms ease;
+  transition: opacity 1000ms ease;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   box-sizing: border-box;
-  height: 75%;
   width: 75%;
   z-index: 9999;
   color: white;
@@ -17,31 +16,33 @@
 }
 
 .mainModal__container {
+  position: relative;
   margin: 0 auto;
-  max-width: 1100px;
+  max-width: 600px;
   overflow: hidden;
   background-color: black;
-  border-radius: 10%;
+  border-radius: 35px;
   border: 1px solid white;
   height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .mainModal__header {
-  padding: 64px;
+  padding: 64px 64px;
 }
 
 .mainModal__title {
   margin-top: 0;
+  margin-bottom: 0;
   font-size: 35px;
   font-weight: 600;
-  line-height: .85;
-
+  line-height: 0.85;
 }
 
 .mainModal__title span {
   font-size: 26px;
   font-weight: 500;
-
 }
 
 .mainModal__para {
@@ -54,3 +55,28 @@ br {
   display: block;
 }
 
+.modal__buttons {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.modalArrow__container {
+  scale: 1.6;
+  transition: scale 300ms ease;
+  position: absolute;
+  cursor: pointer;
+}
+
+.modalArrow__container--right{
+  right: 16px;
+  bottom: 12px;
+}
+
+.modalArrow__container:hover {
+  scale: 1.8;
+}
+
+.modalArrow__container:active {
+  scale: 1.5
+}

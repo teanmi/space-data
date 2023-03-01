@@ -1,6 +1,8 @@
 import React from "react";
 import "./mainModal.css";
 import Nav from "./nav";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { SvgIcon } from "@mui/material";
 
 const Modal = () => {
   return (
@@ -13,20 +15,27 @@ const Modal = () => {
             <br />
             <br />
             <span>
-              I am a Frontend Developer who loves to be challenged by designing
-              unique user interfaces that offers great user experience!
+              I'm a Frontend Developer who loves to be challenged. I enjoy
+              designing unique websites that offers great user experience.
             </span>
           </h2>
           <p className="mainModal__para">
             Welcome to Portfolio Galaxy,
             <br />
-            Here you can learn about me, see my projects, and contact me.
+            Here you can learn about me, see my projects, and get my contact
+            info.
             <br />
-            To start your journey, click the arrow in the bottom right corner. 
-            You can go back anytime by pressing an arrow that will appear in the bottom left corner.
+            To start your journey, click the arrow in the bottom right
+            corner. You can go back anytime by pressing the arrow in the bottom
+            left corner.
             <br />
-            Also if you would like to admire the planets press the hide button.
+            Also if you would like to admire the solar system you can click the hide button at the bottom.
           </p>
+        </div>
+        <div className="modal__buttons">
+          <div className="modalArrow__container modalArrow__container--right">
+            <SvgIcon component={ArrowForwardIcon} className="modalArrow modalArrow-right" fontSize="large" />
+          </div>
         </div>
       </div>
     </div>

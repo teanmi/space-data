@@ -30,7 +30,6 @@ const Header = () => {
       setTimeout(() => {
         startLoading();
       }, 1000);
-
     };
 
     /*
@@ -44,8 +43,8 @@ const Header = () => {
     let dTheta = (1.2 * Math.PI) / 600;
     function animate() {
       if (loading === true) {
-        document.getElementById("loading-screen").classList.add("fade-out")
-        document.getElementById("modal-main").classList.add("fade-in")
+        document.getElementById("loading-screen").classList.add("fade-out");
+        loadModal();
       }
 
       let rotationAmount = 0.003;
@@ -69,6 +68,12 @@ const Header = () => {
       // controls.update();
 
       renderer.render(scene, camera);
+    }
+
+    function loadModal() {
+      setTimeout(() => {
+        document.getElementById("modal-main").classList.add("fade-in");
+      }, 1000);
     }
 
     function addStar() {
@@ -253,7 +258,6 @@ const Header = () => {
       saturnRingGeometry.attributes.uv.setXY(i, v3.length() < 1.55 ? 0 : 1, 1);
     }
 
-
     const saturnRingMaterial = new THREE.MeshBasicMaterial({
       map: saturnRingTexture,
       color: 0xffffff,
@@ -265,7 +269,7 @@ const Header = () => {
 
     saturn.position.x = 4.7;
     saturnRing.position.x = 4.7;
-    saturnRing.rotation.x = 1.5
+    saturnRing.rotation.x = 1.5;
 
     scene.add(saturn, saturnRing);
 
@@ -335,17 +339,16 @@ const Header = () => {
     */
 
     function startLoading() {
-      const circularSpinner = document.querySelector(".circular-spinner")
+      const circularSpinner = document.querySelector(".circular-spinner");
 
       circularSpinner.style.opacity = 0;
-    
+
       const circularProgress = document.querySelector(".circular-progress");
-      const circularText = document.querySelector(".loading-text")
+      const circularText = document.querySelector(".loading-text");
 
       circularProgress.style.opacity = 1;
       circularProgress.style.display = "flex";
       circularText.style.opacity = 1;
-
 
       let progressStartValue = 0;
       const progressEndValue = 100,
