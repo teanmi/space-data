@@ -1,35 +1,38 @@
 #modal-main {
   opacity: 0;
   transition: opacity 1000ms ease;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  box-sizing: border-box;
-  width: 75%;
+  width: 620px;
   z-index: 9999;
   color: white;
 }
 
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  box-sizing: border-box;
+  transform: translate(-50%, -50%);
+}
+
 #modal-main.fade-in {
-  opacity: 0.9;
+  opacity: 0.85;
 }
 
 .mainModal__container {
   position: relative;
   margin: 0 auto;
-  max-width: 600px;
+  max-width: 900px;
   overflow: hidden;
   background-color: black;
   border-radius: 35px;
   border: 1px solid white;
-  height: 100%;
   display: flex;
   flex-direction: column;
 }
 
 .mainModal__header {
-  padding: 64px 64px;
+  padding: 48px;
+  text-align: center;
 }
 
 .mainModal__title {
@@ -68,7 +71,7 @@ br {
   cursor: pointer;
 }
 
-.modalArrow__container--right{
+.modalArrow__container--right {
   right: 16px;
   bottom: 12px;
 }
@@ -78,5 +81,94 @@ br {
 }
 
 .modalArrow__container:active {
-  scale: 1.5
+  scale: 1.5;
+}
+
+.blink-text {
+  -webkit-animation: blink-text 1600ms linear infinite;
+  -moz-animation: blink-text 1600ms linear infinite;
+  -ms-animation: blink-text 1600ms linear infinite;
+  -o-animation: blink-text 1600ms linear infinite;
+  animation: blink-text 1600ms linear infinite;
+}
+
+@-webkit-keyframes blink-text {
+  0% {
+    color: white;
+    opacity: 1;
+  }
+  
+  60% {
+    color: white;
+    opacity: 0;
+  }
+  
+  100% {
+    color: white;
+    opacity: 1;
+  }
+}
+@-moz-keyframes blink-text {
+  0% {
+    color: white;
+    opacity: 1;
+  }
+  
+  60% {
+    color: white;
+    opacity: 0;
+  }
+  
+  100% {
+    color: white;
+    opacity: 1;
+  }
+}
+@-ms-keyframes blink-text {
+  0% {
+    color: white;
+    opacity: 1;
+  }
+  
+  60% {
+    color: white;
+    opacity: 0;
+  }
+  
+  100% {
+    color: white;
+    opacity: 1;
+  }
+}
+@-o-keyframes blink-text {
+  0% {
+    color: white;
+    opacity: 1;
+  }
+  
+  60% {
+    color: white;
+    opacity: 0;
+  }
+  
+  100% {
+    color: white;
+    opacity: 1;
+  }
+}
+@keyframes blink-text {
+  0% {
+    color: white;
+    opacity: 1;
+  }
+  
+  60% {
+    color: white;
+    opacity: 0;
+  }
+  
+  100% {
+    color: white;
+    opacity: 1;
+  }
 }

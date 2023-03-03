@@ -13,6 +13,9 @@ import Saturn from "../images/saturn.jpg";
 import SaturnRing from "../images/saturnring.png";
 import Uranus from "../images/uranus.jpg";
 import Neptune from "../images/neptune.jpg";
+import MainModal from "./mainModal";
+import camera from "../functions/camera";
+import setCameraPosition from "../functions/setCameraPosition";
 
 const Header = () => {
   useEffect(() => {
@@ -106,17 +109,14 @@ const Header = () => {
 
     */
 
+    const canvas = document.querySelector("#background");
+
     const scene = new THREE.Scene();
 
-    const camera = new THREE.PerspectiveCamera(
-      90,
-      window.innerWidth / window.innerHeight,
-      0.1,
-      1000
-    );
+    setCameraPosition();
 
     const renderer = new THREE.WebGL1Renderer({
-      canvas: document.querySelector("#background"),
+      canvas: canvas,
       antialias: true,
     });
 
@@ -125,8 +125,7 @@ const Header = () => {
 
     let cameraPosition = window.innerWidth >= 1250 ? 1250 : window.innerWidth;
 
-    camera.position.setZ(12500 / cameraPosition);
-
+    setCameraPosition(0, 0, 12500 / cameraPosition);
     /*
 
       GEOMETRY SHAPES
@@ -378,6 +377,7 @@ const Header = () => {
         </div>
         <div className="circular-spinner"></div>
       </div>
+      <MainModal />
     </div>
   );
 };
