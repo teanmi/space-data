@@ -43,132 +43,14 @@
   line-height: 0.85;
 }
 
-.mainModal__title span {
-  font-size: 26px;
-  font-weight: 500;
-}
-
 .mainModal__para {
   font-size: 18px;
 }
 
-br {
-  content: "";
-  margin: 8px;
-  display: block;
+.mainModal__planets {
+  list-style: none;
 }
 
-.modal__buttons {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-}
-
-.modalArrow__container {
-  scale: 1.6;
-  transition: scale 300ms ease;
-  position: absolute;
-  cursor: pointer;
-}
-
-.modalArrow__container--right {
-  right: 16px;
-  bottom: 12px;
-}
-
-.modalArrow__container:hover {
-  scale: 1.8;
-}
-
-.modalArrow__container:active {
-  scale: 1.5;
-}
-
-.blink-text {
-  -webkit-animation: blink-text 1600ms linear infinite;
-  -moz-animation: blink-text 1600ms linear infinite;
-  -ms-animation: blink-text 1600ms linear infinite;
-  -o-animation: blink-text 1600ms linear infinite;
-  animation: blink-text 1600ms linear infinite;
-}
-
-@-webkit-keyframes blink-text {
-  0% {
-    color: white;
-    opacity: 1;
-  }
-  
-  60% {
-    color: white;
-    opacity: 0;
-  }
-  
-  100% {
-    color: white;
-    opacity: 1;
-  }
-}
-@-moz-keyframes blink-text {
-  0% {
-    color: white;
-    opacity: 1;
-  }
-  
-  60% {
-    color: white;
-    opacity: 0;
-  }
-  
-  100% {
-    color: white;
-    opacity: 1;
-  }
-}
-@-ms-keyframes blink-text {
-  0% {
-    color: white;
-    opacity: 1;
-  }
-  
-  60% {
-    color: white;
-    opacity: 0;
-  }
-  
-  100% {
-    color: white;
-    opacity: 1;
-  }
-}
-@-o-keyframes blink-text {
-  0% {
-    color: white;
-    opacity: 1;
-  }
-  
-  60% {
-    color: white;
-    opacity: 0;
-  }
-  
-  100% {
-    color: white;
-    opacity: 1;
-  }
-}
-@keyframes blink-text {
-  0% {
-    color: white;
-    opacity: 1;
-  }
-  
-  60% {
-    color: white;
-    opacity: 0;
-  }
-  
-  100% {
-    color: white;
-    opacity: 1;
-  }
+.mainModal__planet {
+  margin-bottom: 4px;
 }

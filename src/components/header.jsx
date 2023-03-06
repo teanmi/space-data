@@ -16,6 +16,8 @@ import Neptune from "../images/neptune.jpg";
 import MainModal from "./mainModal";
 import camera from "../functions/camera";
 import setCameraPosition from "../functions/setCameraPosition";
+import getCameraPosition from "../functions/getCameraPosition"
+import {getCurrentZoom} from "../functions/currentZoom"
 
 const Header = () => {
   useEffect(() => {
@@ -100,7 +102,9 @@ const Header = () => {
 
       let cameraPosition = window.innerWidth >= 1250 ? 1250 : window.innerWidth;
 
-      camera.position.setZ(12500 / cameraPosition);
+      let currentZoom = getCurrentZoom()
+
+      camera.position.setZ(currentZoom / cameraPosition);
     }
 
     /*
@@ -113,7 +117,6 @@ const Header = () => {
 
     const scene = new THREE.Scene();
 
-    setCameraPosition();
 
     const renderer = new THREE.WebGL1Renderer({
       canvas: canvas,
@@ -123,9 +126,9 @@ const Header = () => {
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(window.innerWidth, window.innerHeight);
 
-    let cameraPosition = window.innerWidth >= 1250 ? 1250 : window.innerWidth;
+    const cameraPosition = getCameraPosition();
 
-    setCameraPosition(0, 0, 12500 / cameraPosition);
+    setCameraPosition([0, 0, 12500 / cameraPosition]);
     /*
 
       GEOMETRY SHAPES
