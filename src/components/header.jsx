@@ -16,8 +16,9 @@ import Neptune from "../images/neptune.jpg";
 import MainModal from "./mainModal";
 import camera from "../functions/camera";
 import setCameraPosition from "../functions/setCameraPosition";
-import getCameraPosition from "../functions/getCameraPosition"
-import {getCurrentZoom} from "../functions/currentZoom"
+import getCameraPosition from "../functions/getCameraPosition";
+import { getCurrentZoom } from "../functions/currentZoom";
+import PlanetModals from "./planetModals";
 
 const Header = () => {
   useEffect(() => {
@@ -102,8 +103,7 @@ const Header = () => {
 
       let cameraPosition = window.innerWidth >= 1250 ? 1250 : window.innerWidth;
 
-      let currentZoom = getCurrentZoom()
-
+      let currentZoom = getCurrentZoom();
       camera.position.setZ(currentZoom / cameraPosition);
     }
 
@@ -116,7 +116,6 @@ const Header = () => {
     const canvas = document.querySelector("#background");
 
     const scene = new THREE.Scene();
-
 
     const renderer = new THREE.WebGL1Renderer({
       canvas: canvas,
@@ -381,6 +380,7 @@ const Header = () => {
         <div className="circular-spinner"></div>
       </div>
       <MainModal />
+      <PlanetModals />
     </div>
   );
 };

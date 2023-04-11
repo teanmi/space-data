@@ -4,6 +4,7 @@
   width: 620px;
   z-index: 9999;
   color: white;
+  pointer-events: none;
 }
 
 .modal {
@@ -16,6 +17,24 @@
 
 #modal-main.fade-in {
   opacity: 0.85;
+  pointer-events: initial;
+}
+
+#modal-main.hide {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+#modal-main.hide .mainModal__title {
+  pointer-events: inherit;
+}
+
+#modal-main.hide .mainModal__para {
+  pointer-events: inherit;
+}
+
+#modal-main.hide .mainModal__planet {
+  pointer-events: inherit;
 }
 
 .mainModal__container {

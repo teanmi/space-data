@@ -1,0 +1,8 @@
+.planetModal {
+  opacity: 0;
+  transition: opacity 1000ms ease;
+  width: 620px;
+  z-index: 9999;
+  color: white;
+  pointer-events: none;
+}
