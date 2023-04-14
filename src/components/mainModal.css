@@ -1,11 +1,4 @@
-#modal-main {
-  opacity: 0;
-  transition: opacity 1000ms ease;
-  width: 620px;
-  z-index: 9999;
-  color: white;
-  pointer-events: none;
-}
+/* general modal styles */
 
 .modal {
   position: absolute;
@@ -13,6 +6,81 @@
   left: 50%;
   box-sizing: border-box;
   transform: translate(-50%, -50%);
+}
+
+.modal__container {
+  position: relative;
+  margin: 0 auto;
+  max-width: 900px;
+  overflow: hidden;
+  background-color: black;
+  border-radius: 35px;
+  border: 1px solid white;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal__header {
+  padding: 48px;
+  text-align: center;
+}
+
+.modal__title {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 35px;
+  font-weight: 600;
+  line-height: 0.85;
+}
+
+.modal__para {
+  font-size: 18px;
+}
+
+.modal__planets {
+  list-style: none;
+  padding: 0;
+}
+
+.modal__planet {
+  margin-bottom: 4px;
+}
+
+.modal__footer {
+  display: flex;
+  padding: 32px;
+  position: relative;
+}
+
+.modal__footerButton {
+  position: absolute;
+  top: 12px;
+}
+
+.modal__footerButton--back {
+  left: 32px;
+}
+
+.modal__footerButton--main {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.modal__footerButton--next {
+  right: 32px;
+}
+
+
+
+/* main-modal styles */
+
+#modal-main {
+  opacity: 0;
+  transition: opacity 1000ms ease;
+  width: 620px;
+  z-index: 9999;
+  color: white;
+  pointer-events: none;
 }
 
 #modal-main.fade-in {
@@ -35,41 +103,4 @@
 
 #modal-main.hide .mainModal__planet {
   pointer-events: inherit;
-}
-
-.mainModal__container {
-  position: relative;
-  margin: 0 auto;
-  max-width: 900px;
-  overflow: hidden;
-  background-color: black;
-  border-radius: 35px;
-  border: 1px solid white;
-  display: flex;
-  flex-direction: column;
-}
-
-.mainModal__header {
-  padding: 48px;
-  text-align: center;
-}
-
-.mainModal__title {
-  margin-top: 0;
-  margin-bottom: 0;
-  font-size: 35px;
-  font-weight: 600;
-  line-height: 0.85;
-}
-
-.mainModal__para {
-  font-size: 18px;
-}
-
-.mainModal__planets {
-  list-style: none;
-}
-
-.mainModal__planet {
-  margin-bottom: 4px;
 }

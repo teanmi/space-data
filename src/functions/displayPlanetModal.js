@@ -1,5 +1,9 @@
-const displayPlanetModal = () => {
-  //add stuff
-}
+const displayPlanetModal = (planet) => {
+  const planetModal = document.getElementById(`planetModal${planet}`);
 
-export default displayPlanetModal
+  setTimeout(() => {
+    planetModal.classList.add("fade-in");
+  }, 800);
+};
+
+export default displayPlanetModal;

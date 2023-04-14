@@ -6,3 +6,8 @@
   color: white;
   pointer-events: none;
 }
+
+.planetModal.fade-in {
+  opacity: 1;
+  pointer-events: all;
+}

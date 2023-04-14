@@ -4,9 +4,11 @@ import hideMainModal from "./hideMainModal";
 import displayPlanetModal from "./displayPlanetModal";
 
 const sendToPlanet = (planet) => {
-  const planetPosition = getPlanetPosition(planet) 
+  let planetName = planet.toLowerCase()
+  const planetPosition = getPlanetPosition(planetName) 
   hideMainModal();
-  // displayPlanetModal(planet)
+  
+  displayPlanetModal(planetName)
 
 
   setCameraPosition(planetPosition);
