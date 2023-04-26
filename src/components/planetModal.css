@@ -5,9 +5,18 @@
   z-index: 9999;
   color: white;
   pointer-events: none;
+  max-width: 550px;
 }
 
 .planetModal.fade-in {
   opacity: 1;
   pointer-events: all;
+}
+
+.planetModal__header {
+  padding-bottom: 0;
+}
+
+.planetModal__para {
+  margin-bottom: 32px;
 }

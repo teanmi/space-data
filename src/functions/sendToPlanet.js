@@ -1,17 +1,24 @@
 import setCameraPosition from "./setCameraPosition";
-import getPlanetPosition from "./getPlanetPositon"
-import hideMainModal from "./hideMainModal";
-import displayPlanetModal from "./displayPlanetModal";
+import getPlanetPosition from "./getPlanetPositon";
+import { hideMainModal } from "./mainModalFunctions";
+import { hidePlanetModal, showPlanetModal } from "./planetModalFunctions";
 
-const sendToPlanet = (planet) => {
-  let planetName = planet.toLowerCase()
-  const planetPosition = getPlanetPosition(planetName) 
+const sendToPlanet = (nextPlanet, currentPlanet = undefined) => {
+
+  const nextPlanetName = nextPlanet.toLowerCase();
+
+  const nextPlanetPosition = getPlanetPosition(nextPlanetName);
+
+  if (currentPlanet) {
+    const currentPlanetName = currentPlanet.toLowerCase();
+    hidePlanetModal(currentPlanetName);
+  }
+
   hideMainModal();
-  
-  displayPlanetModal(planetName)
 
+  showPlanetModal(nextPlanetName);
 
-  setCameraPosition(planetPosition);
+  setCameraPosition(nextPlanetPosition);
 };
 
 export default sendToPlanet;

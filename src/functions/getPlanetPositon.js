@@ -9,6 +9,7 @@ const getPlanetPositon = (planet) => {
   switch (planet) {
     case "mercury":
       const mercuryZoom = 1250;
+      
       position = [-7, 0, mercuryZoom / cameraPosition];
       setCurrentZoom(mercuryZoom)
       break;

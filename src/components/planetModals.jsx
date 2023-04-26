@@ -1,62 +1,63 @@
-import React from "react";
-import "./planetModals.css";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import HomeIcon from "@mui/icons-material/Home";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import sendToPlanet from "../functions/sendToPlanet";
+import React, { useEffect, useState } from "react";
+import PlanetModal from "./planetModal";
+import axios from "axios";
+import rapidApiKey from "../keys";
+
+const options = {
+  method: "GET",
+  url: "https://planets-info-by-newbapi.p.rapidapi.com/api/v1/planet/list",
+  headers: {
+    "content-type": "application/octet-stream",
+    "X-RapidAPI-Key": rapidApiKey,
+    "X-RapidAPI-Host": "planets-info-by-newbapi.p.rapidapi.com",
+  },
+};
 
 const planets = [
-  "mercury",
-  "venus",
-  "earth",
-  "mars",
-  "jupiter",
-  "saturn",
-  "uranus",
-  "neptune",
+  { name: "mercury", description: "" },
+  { name: "venus", description: "" },
+  { name: "earth", description: "" },
+  { name: "mars", description: "" },
+  { name: "jupiter", description: "" },
+  { name: "saturn", description: "" },
+  { name: "uranus", description: "" },
+  { name: "neptune", description: "" },
 ];
 
-//add buttons to next planet, api stats, make visable
-// add hide planet modal in onClick Events
+//, api stats,
+
 const PlanetModals = () => {
+  const [planetDataLoading, setPlanetDataLoading] = useState(false);
+
+  useEffect(() => {
+    async function fetchPlanetData() {
+      setPlanetDataLoading(true);
+
+      const response = await axios.request(options);
+      const data = response.data;
+
+      data.forEach((planet) => {
+        const planetIndex = planet.planetOrder - 1;
+        planets[planetIndex].description = planet.description;
+      });
+
+      setPlanetDataLoading(false);
+    }
+
+    fetchPlanetData();
+  }, []);
+
   return (
     <ul id="plantModals">
       {planets.map((planet, index) => {
-        const planetName = planet[0].toUpperCase() + planet.slice(1);
         return (
-          <li key={index}>
-            <div id={`planetModal${planet}`} className="modal planetModal">
-              <div className="modal__container">
-                <div className="modal__header">
-                  <h2 className="modal__title">{planetName}</h2>
-                  <p className="modal__para"></p>
-                </div>
-                <div className="modal__footer">
-                  {index !== 0 && (
-                    <div
-                      className="modal__footerButton modal__footerButton--back"
-                      onClick={() => sendToPlanet(planets[index - 1])}
-                    >
-                      <ArrowBackIcon fontSize="large" />
-                    </div>
-                  )}
-                  <div className="modal__footerButton modal__footerButton--main">
-                    <HomeIcon fontSize="large" />
-                  </div>
-                  {index !== planets.length - 1 && (
-                    <div
-                      className="modal__footerButton modal__footerButton--next"
-                      onClick={() => {
-                        sendToPlanet(planets[index + 1]);
-                      }}
-                    >
-                      <ArrowForwardIcon fontSize="large" />
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
-          </li>
+          <PlanetModal
+            key={index}
+            planet={planet}
+            index={index}
+            planets={planets}
+            loading={planetDataLoading}
+          />
         );
       })}
     </ul>

@@ -1,7 +1,6 @@
 import React from "react";
 import "./mainModal.css";
 import sendToPlanet from "../functions/sendToPlanet";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 const Modal = () => {
   return (

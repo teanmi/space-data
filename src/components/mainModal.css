@@ -50,6 +50,7 @@
   display: flex;
   padding: 32px;
   position: relative;
+  border-top: 1px solid white;
 }
 
 .modal__footerButton {
@@ -69,8 +70,6 @@
 .modal__footerButton--next {
   right: 32px;
 }
-
-
 
 /* main-modal styles */
 
