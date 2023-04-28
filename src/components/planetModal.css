@@ -9,11 +9,12 @@
 }
 
 .planetModal.fade-in {
-  opacity: 1;
+  opacity: 0.85;
   pointer-events: all;
 }
 
 .planetModal__header {
+  padding-top: 32px;
   padding-bottom: 0;
 }
 

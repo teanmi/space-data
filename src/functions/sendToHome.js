@@ -1,3 +1,4 @@
+import { setCurrentZoom } from "./currentZoom";
 import getCameraPosition from "./getCameraPosition";
 import { showMainModal } from "./mainModalFunctions";
 import { hidePlanetModal } from "./planetModalFunctions";
@@ -11,6 +12,8 @@ const sendToHome = (planet = undefined) => {
   }
 
   const cameraPosition = getCameraPosition();
+
+  setCurrentZoom(12500);
 
   setCameraPosition([0, 0, 12500 / cameraPosition]);
 };

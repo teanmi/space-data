@@ -40,10 +40,25 @@
 .modal__planets {
   list-style: none;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  margin-top: 16px;
 }
 
 .modal__planet {
   margin-bottom: 4px;
+  width: min-content;
+  cursor: pointer;
+}
+
+.modal__planet:hover {
+  text-decoration: underline;
+}
+
+.modal__planet:last-child {
+  margin-bottom: 0 !important;
 }
 
 .modal__footer {
@@ -56,6 +71,7 @@
 .modal__footerButton {
   position: absolute;
   top: 12px;
+  cursor: pointer;
 }
 
 .modal__footerButton--back {
