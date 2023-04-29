@@ -1,24 +1,23 @@
-import getCameraPosition from "./getCameraPosition";
+import getCameraPositionZModifier from "./getCameraPositionZModifier";
 import { setCurrentZoom } from "./currentZoom";
 
-const cameraPosition = getCameraPosition();
-
+const cameraPosition = getCameraPositionZModifier();
 
 const getPlanetPositon = (planet) => {
   let position;
   switch (planet) {
     case "mercury":
       const mercuryZoom = 1250;
-      
+
       position = [-7, 0, mercuryZoom / cameraPosition];
-      setCurrentZoom(mercuryZoom)
+      setCurrentZoom(mercuryZoom);
       break;
 
     case "venus":
       const venusZoom = 1550;
 
       position = [-5.5, 0, venusZoom / cameraPosition];
-      setCurrentZoom(venusZoom)
+      setCurrentZoom(venusZoom);
 
       break;
 
@@ -26,7 +25,7 @@ const getPlanetPositon = (planet) => {
       const earthZoom = 2250;
 
       position = [-3.8, 0, earthZoom / cameraPosition];
-      setCurrentZoom(earthZoom)
+      setCurrentZoom(earthZoom);
 
       break;
 
@@ -34,7 +33,7 @@ const getPlanetPositon = (planet) => {
       const marsZoom = 2050;
 
       position = [-2, 0, marsZoom / cameraPosition];
-      setCurrentZoom(marsZoom)
+      setCurrentZoom(marsZoom);
 
       break;
 
@@ -42,7 +41,7 @@ const getPlanetPositon = (planet) => {
       const jupiterZoom = 4250;
 
       position = [0.75, 0, jupiterZoom / cameraPosition];
-      setCurrentZoom(jupiterZoom)
+      setCurrentZoom(jupiterZoom);
 
       break;
 
@@ -50,7 +49,7 @@ const getPlanetPositon = (planet) => {
       const saturnZoom = 3550;
 
       position = [4.7, 0, saturnZoom / cameraPosition];
-      setCurrentZoom(saturnZoom)
+      setCurrentZoom(saturnZoom);
 
       break;
 
@@ -58,7 +57,7 @@ const getPlanetPositon = (planet) => {
       const uranusZoom = 2850;
 
       position = [8, 0, uranusZoom / cameraPosition];
-      setCurrentZoom(uranusZoom)
+      setCurrentZoom(uranusZoom);
 
       break;
 
@@ -66,16 +65,18 @@ const getPlanetPositon = (planet) => {
       const neptuneZoom = 2550;
 
       position = [10.8, 0, neptuneZoom / cameraPosition];
-      setCurrentZoom(neptuneZoom)
+      setCurrentZoom(neptuneZoom);
 
       break;
 
     default:
-      console.log("ERROR: getPlanetPosition provided with incorrect planet name of " + planet + ". Please Fix.")
+      console.log(
+        "ERROR: getPlanetPosition provided with incorrect planet name of " +
+          planet +
+          ". Please Fix."
+      );
   }
   return position;
-
 };
-
 
 export default getPlanetPositon;

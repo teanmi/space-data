@@ -7,4 +7,8 @@ const setCameraPosition = (position) => {
   camera.position.setZ(z);
 };
 
-export default setCameraPosition;
+const getCameraPosition = () => {
+  return [camera.position.x, camera.position.y, camera.position.z];
+};
+
+export { setCameraPosition, getCameraPosition };

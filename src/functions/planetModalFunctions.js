@@ -3,7 +3,7 @@ const showPlanetModal = (planet) => {
 
   setTimeout(() => {
     planetModal.classList.add("fade-in");
-  }, 800);
+  }, 1600);
 };
 
 const hidePlanetModal = (planet) => {

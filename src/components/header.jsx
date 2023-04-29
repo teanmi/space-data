@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "./header.css";
 import * as THREE from "three";
-// import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import * as TWEEN from "@tweenjs/tween.js";
 import Sun from "../images/sun.jpg";
 import Mercury from "../images/mercury.jpg";
 import Venus from "../images/venus.jpg";
@@ -15,8 +15,8 @@ import Uranus from "../images/uranus.jpg";
 import Neptune from "../images/neptune.jpg";
 import MainModal from "./mainModal";
 import camera from "../functions/camera";
-import setCameraPosition from "../functions/setCameraPosition";
-import getCameraPosition from "../functions/getCameraPosition";
+import { setCameraPosition } from "../functions/cameraPositionFunctions";
+import getCameraPositionZModifier from "../functions/getCameraPositionZModifier";
 import { getCurrentZoom } from "../functions/currentZoom";
 import PlanetModals from "./planetModals";
 
@@ -53,25 +53,26 @@ const Header = () => {
         loadModal();
       }
 
-      let rotationAmount = 0.003;
+      TWEEN.update();
+
+      let rotationAmount = 0.05;
 
       requestAnimationFrame(animate);
 
-      // earth.rotation.y += rotationAmount / 3;
+      mercury.rotation.y += rotationAmount / 700;
+      venus.rotation.y += rotationAmount / 3000;
+      earth.rotation.y += rotationAmount / 24;
+      mars.rotation.y += rotationAmount / 25;
+      jupiter.rotation.y += rotationAmount / 10;
+      saturn.rotation.y += rotationAmount / 11;
+      saturnRing.rotation.z += rotationAmount / 11;
+      uranus.rotation.y += rotationAmount / 17;
+      neptune.rotation.y += rotationAmount / 16;
 
       theta += dTheta;
       moon.position.x = r * Math.cos(theta) - 3.8;
       moon.position.z = r * Math.sin(theta);
       moon.position.y = r * Math.cos(theta);
-
-      // saturn.rotation.x += rotationAmount;
-      // saturn.rotation.y += rotationAmount;
-      // saturn.rotation.z += rotationAmount;
-
-      // saturnRing.rotation.x += rotationAmount;
-      // saturnRing.rotation.y += rotationAmount;
-
-      // controls.update();
 
       renderer.render(scene, camera);
     }
@@ -125,7 +126,7 @@ const Header = () => {
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(window.innerWidth, window.innerHeight);
 
-    const cameraPosition = getCameraPosition();
+    const cameraPosition = getCameraPositionZModifier();
 
     setCameraPosition([0, 0, 12500 / cameraPosition]);
     /*
@@ -144,6 +145,7 @@ const Header = () => {
     const sun = new THREE.Mesh(sunGeometry, sunMaterial);
 
     sun.position.x = -10;
+    sun.rotation.z = -0.1265364;
 
     scene.add(sun);
 
@@ -159,6 +161,7 @@ const Header = () => {
     const mercury = new THREE.Mesh(mercuryGeometry, mercuryMaterial);
 
     mercury.position.x = -7;
+    mercury.rotation.z = -0.000175;
 
     scene.add(mercury);
 
@@ -172,6 +175,7 @@ const Header = () => {
     const venus = new THREE.Mesh(venusGeometry, venusMaterial);
 
     venus.position.x = -5.5;
+    venus.rotation.z = -3.0944688;
 
     scene.add(venus);
 
@@ -186,7 +190,7 @@ const Header = () => {
     const earth = new THREE.Mesh(earthGeometry, earthMaterial);
 
     earth.position.x = -3.8;
-    // earth.rotation.z = 0.3;
+    earth.rotation.z = -0.4101524;
 
     scene.add(earth);
 
@@ -215,6 +219,7 @@ const Header = () => {
     const mars = new THREE.Mesh(marsGeometry, marsMaterial);
 
     mars.position.x = -2;
+    mars.rotation.z = -0.43964844;
 
     scene.add(mars);
 
@@ -231,6 +236,7 @@ const Header = () => {
     const jupiter = new THREE.Mesh(jupiterGeometry, jupiterMaterial);
 
     jupiter.position.x = 0.75;
+    jupiter.rotation.z = -0.05462881;
 
     scene.add(jupiter);
 
@@ -269,8 +275,10 @@ const Header = () => {
     const saturnRing = new THREE.Mesh(saturnRingGeometry, saturnRingMaterial);
 
     saturn.position.x = 4.7;
+    // saturn.rotation.z = -0.46652651;
     saturnRing.position.x = 4.7;
-    saturnRing.rotation.x = 1.5;
+    saturnRing.rotation.x = 1.5
+    // saturnRing.rotation.y = -0.46652651;
 
     scene.add(saturn, saturnRing);
 
@@ -284,6 +292,7 @@ const Header = () => {
     const uranus = new THREE.Mesh(uranusGeometry, uranusMaterial);
 
     uranus.position.x = 8;
+    uranus.rotation.z = -1.7064084;
 
     scene.add(uranus);
 
@@ -299,6 +308,7 @@ const Header = () => {
     const neptune = new THREE.Mesh(neptuneGeometry, neptuneMaterial);
 
     neptune.position.x = 10.8;
+    neptune.rotation.z = -0.49427724;
 
     scene.add(neptune);
 
