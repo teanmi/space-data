@@ -9,7 +9,7 @@ const showMainModal = () => {
 
   setTimeout(() => {
     mainModal.classList.remove("hide");
-  }, 2600);
+  }, 2300);
 };
 
 export { hideMainModal, showMainModal };

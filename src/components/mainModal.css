@@ -119,3 +119,15 @@
 #modal-main.hide .mainModal__planet {
   pointer-events: inherit;
 }
+
+@media (max-width: 768px) {
+  #modal-main {
+    width: 75%;
+  }
+}
+
+@media (max-width: 520px) {
+  #modal-main {
+    width: 390px;
+  }
+}

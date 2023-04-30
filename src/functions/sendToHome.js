@@ -25,7 +25,7 @@ const sendToHome = (planet) => {
 
   // setCameraPosition(homePosition);
 
-  tweenCamera(targetPosition, 3000);
+  tweenCamera(targetPosition, 2500);
 };
 
 export default sendToHome;

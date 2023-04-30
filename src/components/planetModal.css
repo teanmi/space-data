@@ -21,3 +21,15 @@
 .planetModal__para {
   margin-bottom: 32px;
 }
+
+@media (max-width: 768px) {
+  .planetModal {
+    width: 75%;
+  }
+}
+
+@media (max-width: 520px) {
+  .planetModal {
+    width: 390px;
+  }
+}
