@@ -131,3 +131,9 @@
     width: 390px;
   }
 }
+
+@media (max-height: 450px) {
+  .modal__header {
+    padding: 32px 36px;
+  }
+}

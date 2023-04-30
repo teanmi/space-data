@@ -33,3 +33,9 @@
     width: 390px;
   }
 }
+
+@media (max-height: 450px) {
+  .planetModal__para {
+    font-size: 16px;
+  }
+}
