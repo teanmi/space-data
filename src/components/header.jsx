@@ -105,7 +105,7 @@ const Header = () => {
       let cameraPosition = window.innerWidth >= 1250 ? 1250 : window.innerWidth;
 
       let currentZoom = getCurrentZoom();
-      camera.position.setZ(currentZoom / cameraPosition);
+      camera.position.setZ(currentZoom / cameraPosition); 
     }
 
     /*
