@@ -4,13 +4,12 @@ import axios from "axios";
 import rapidApiKey from "../keys";
 
 const options = {
-  method: "GET",
-  url: "https://planets-info-by-newbapi.p.rapidapi.com/api/v1/planet/list",
+  method: 'GET',
+  url: 'https://planets-info-by-newbapi.p.rapidapi.com/api/v1/planets/',
   headers: {
-    "content-type": "application/octet-stream",
-    "X-RapidAPI-Key": rapidApiKey,
-    "X-RapidAPI-Host": "planets-info-by-newbapi.p.rapidapi.com",
-  },
+    'X-RapidAPI-Key': rapidApiKey,
+    'X-RapidAPI-Host': 'planets-info-by-newbapi.p.rapidapi.com'
+  }
 };
 
 const planets = [
