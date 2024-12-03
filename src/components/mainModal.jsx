@@ -1,57 +1,19 @@
 import React from "react";
 import "./mainModal.css";
-import sendToPlanet from "../functions/sendToPlanet";
 
-const Modal = () => {
+const Modal = ({ score }) => {
   return (
     <div id="modal-main" className="modal">
-      <div className="modal__container" >
+      <div className="modal__container">
         <div className="modal__header">
-          <h2 className="modal__title">Welcome to the Milky Way Galaxy!</h2>
-          <p className="modal__para">
-            Click on a planet to learn more about it.
-          </p>
-          <ul className="modal__planets">
-            <li
-              className="modal__planet"
-              onClick={() => sendToPlanet("mercury")}
-            >
-              Mercury
-            </li>
-            <li className="modal__planet" onClick={() => sendToPlanet("venus")}>
-              Venus
-            </li>
-            <li className="modal__planet" onClick={() => sendToPlanet("earth")}>
-              Earth
-            </li>
-            <li className="modal__planet" onClick={() => sendToPlanet("mars")}>
-              Mars
-            </li>
-            <li
-              className="modal__planet"
-              onClick={() => sendToPlanet("jupiter")}
-            >
-              Jupiter
-            </li>
-            <li
-              className="modal__planet"
-              onClick={() => sendToPlanet("saturn")}
-            >
-              Saturn
-            </li>
-            <li
-              className="modal__planet"
-              onClick={() => sendToPlanet("uranus")}
-            >
-              Uranus
-            </li>
-            <li
-              className="modal__planet"
-              onClick={() => sendToPlanet("neptune")}
-            >
-              Neptune
-            </li>
-          </ul>
+          <h2 className="modal__title">Click a Planet to go to!</h2>
+          <p className="modal__para">Score: {score ? score : 0}</p>
+          <button className="modal__button">
+            Generate score tracker
+          </button>
+          <button className="modal__button">
+            Insert score tracker
+          </button>
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useParams } from "react";
 import "./header.css";
 import * as THREE from "three";
 import * as TWEEN from "@tweenjs/tween.js";
@@ -18,9 +18,11 @@ import camera from "../functions/camera";
 import { setCameraPosition } from "../functions/cameraPositionFunctions";
 import getCameraPositionZModifier from "../functions/getCameraPositionZModifier";
 import { getCurrentZoom } from "../functions/currentZoom";
-import PlanetModals from "./planetModals";
+import sendToPlanet from "../functions/sendToPlanet";
 
 const Header = () => {
+  // use params to pass score to modal
+  const queryParams = new URLSearchParams(window.location.search);
   useEffect(() => {
     /* 
 
@@ -105,7 +107,75 @@ const Header = () => {
       let cameraPosition = window.innerWidth >= 1250 ? 1250 : window.innerWidth;
 
       let currentZoom = getCurrentZoom();
-      camera.position.setZ(currentZoom / cameraPosition); 
+      camera.position.setZ(currentZoom / cameraPosition);
+    }
+
+    function handleButtonClick(event) {
+      const raycaster = new THREE.Raycaster();
+      const mouse = new THREE.Vector2();
+
+      // Convert mouse position to normalized device coordinates (-1 to +1)
+      mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+      raycaster.setFromCamera(mouse, camera);
+
+      //planet click events
+      const intersects = raycaster.intersectObject(mercury);
+      if (intersects.length > 0) {
+        sendToPlanet("mercury");
+        setTimeout(() => {
+          window.location.href = `/mercury?score=${queryParams.get("score")}`;
+        }, 2000);
+      }
+
+      const intersects2 = raycaster.intersectObject(venus);
+      if (intersects2.length > 0) {
+        sendToPlanet("venus");
+        setTimeout(() => {
+          window.location.href = `/venus?score=${queryParams.get("score")}`;
+        }, 2000);
+      }
+
+      const intersects4 = raycaster.intersectObject(mars);
+      if (intersects4.length > 0) {
+        sendToPlanet("mars");
+        setTimeout(() => {
+          window.location.href = `/mars?score=${queryParams.get("score")}`;
+        }, 2000);
+      }
+
+      const intersects5 = raycaster.intersectObject(jupiter);
+      if (intersects5.length > 0) {
+        sendToPlanet("jupiter");
+        setTimeout(() => {
+          window.location.href = `/jupiter?score=${queryParams.get("score")}`;
+        }, 2000);
+      }
+
+      const intersects6 = raycaster.intersectObject(saturn);
+      if (intersects6.length > 0) {
+        sendToPlanet("saturn");
+        setTimeout(() => {
+          window.location.href = `/saturn?score=${queryParams.get("score")}`;
+        }, 2000);
+      }
+
+      const intersects7 = raycaster.intersectObject(uranus);
+      if (intersects7.length > 0) {
+        sendToPlanet("uranus");
+        setTimeout(() => {
+          window.location.href = `/uranus?score=${queryParams.get("score")}`;
+        }, 2000);
+      }
+
+      const intersects8 = raycaster.intersectObject(neptune);
+      if (intersects8.length > 0) {
+        sendToPlanet("neptune");
+        setTimeout(() => {
+          window.location.href = "/neptune?score=0";
+        }, 2000);
+      }
     }
 
     /*
@@ -277,7 +347,7 @@ const Header = () => {
     saturn.position.x = 4.7;
     // saturn.rotation.z = -0.46652651;
     saturnRing.position.x = 4.7;
-    saturnRing.rotation.x = 1.5
+    saturnRing.rotation.x = 1.5;
     // saturnRing.rotation.y = -0.46652651;
 
     scene.add(saturn, saturnRing);
@@ -337,6 +407,8 @@ const Header = () => {
 
     */
 
+    window.addEventListener("click", handleButtonClick, false);
+
     window.addEventListener("resize", () => onWindowResize(), false);
 
     Array(450).fill().forEach(addStar);
@@ -389,8 +461,8 @@ const Header = () => {
         </div>
         <div className="circular-spinner"></div>
       </div>
-      <MainModal />
-      <PlanetModals />
+      <MainModal score={queryParams.get("score")} />
+      {/* <PlanetModals /> */}
     </div>
   );
 };
